@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Explore the Youth Red Cross service areas at Doon University: preparedness, health awareness and community outreach.">
+  <title>Our Work | Youth Red Cross | Doon University</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --red: #c62828;
+      --red-dark: #a61f26;
+      --black: #080808;
+      --ink: #171717;
+      --muted: #626262;
+      --paper: #f5f5f5;
+      --white: #ffffff;
+      --line: #dedede;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Tahoma, sans-serif;
+      --wrap: 1520px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; color: var(--ink); background: var(--white); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(var(--wrap), calc(100% - clamp(48px, 6vw, 80px))); margin-inline: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--red); font-size: .72rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { width: 25px; height: 2px; background: currentColor; content: ""; }
+
+    .utility { color: #f2f2f2; background: var(--black); font-size: .76rem; }
+    .utility-inner { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .utility p { margin: 0; }
+    .utility-tag { color: #ff5555; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: var(--white); }
+    .header-main { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-mark { width: 64px; height: 64px; flex: 0 0 64px; display: block; border-radius: 50%; object-fit: cover; }
+    .university-mark { width: 52px; height: 52px; flex: 0 0 52px; display: block; object-fit: contain; }
+    .brand-copy { display: grid; line-height: 1.15; }
+    .brand-copy strong { color: var(--black); font-family: var(--serif); font-size: 1.35rem; }
+    .brand-copy span { margin-top: 5px; color: var(--muted); font-size: .69rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .header-right { display: flex; align-items: center; gap: 28px; }
+    .primary-nav { display: flex; align-items: center; gap: 24px; }
+    .primary-nav a { padding-block: 9px; color: #242424; font-size: .95rem; font-weight: 700; }
+    .primary-nav a:hover, .primary-nav a[aria-current="page"] { color: var(--red); }
+    .nav-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 18px; border-radius: 3px; color: white; background: var(--red); font-size: .8rem; font-weight: 800; }
+    .nav-cta:hover { background: var(--red-dark); }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 3px; color: var(--black); background: transparent; cursor: pointer; }
+    .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; background: currentColor; }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+
+    .page-hero { position: relative; overflow: hidden; padding: 86px 0 90px; color: white; background: var(--black); }
+    .page-hero::after { position: absolute; top: 0; right: 15%; width: 8px; height: 100%; background: var(--red); content: ""; }
+    .page-hero .wrap { position: relative; z-index: 1; }
+    .page-hero .eyebrow { color: #ff5555; }
+    .page-hero h1 { max-width: 860px; margin: 18px 0 20px; font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.6rem); font-weight: 400; line-height: 1.02; }
+    .page-hero h1 span { color: #ff5555; }
+    .page-hero p { max-width: 700px; margin: 0; color: #dedede; font-size: 1.08rem; }
+    .hero-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 27px; color: white; font-size: .86rem; font-weight: 800; }
+    .hero-link span { color: #ff5555; font-size: 1.2rem; }
+
+    .intro { padding: 84px 0; }
+    .intro-grid { display: grid; grid-template-columns: .82fr 1.18fr; align-items: start; gap: 80px; }
+    .intro h2, .section-heading h2 { margin: 13px 0 14px; color: var(--black); font-family: var(--serif); font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 400; line-height: 1.06; }
+    .intro-copy { padding-top: 8px; }
+    .intro-copy p { margin: 0 0 17px; color: var(--muted); font-size: .98rem; }
+    .work-section { padding: 82px 0 90px; background: var(--paper); }
+    .section-heading { max-width: 690px; margin-bottom: 38px; }
+    .section-heading p { margin: 0; color: var(--muted); }
+    .work-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .work-card { min-height: 280px; display: flex; flex-direction: column; align-items: start; padding: 28px 30px 30px; border-radius: 12px; color: white; background: var(--red); box-shadow: 0 6px 18px rgba(0,0,0,.08); transition: transform .2s ease, box-shadow .2s ease; }
+    .work-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.12); }
+    .work-number { color: #ffffff; font-family: var(--serif); font-size: 1rem; }
+    .work-card h3 { margin: 30px 0 10px; color: white; font-family: var(--serif); font-size: 1.65rem; font-weight: 400; line-height: 1.15; }
+    .work-card p { max-width: 360px; margin: 0; color: #f5f5f5; font-size: .9rem; }
+    .work-label { margin-top: auto; padding-top: 22px; color: white; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+
+    .approach { padding: 82px 0; color: white; background: var(--black); }
+    .approach-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 80px; align-items: start; }
+    .approach .eyebrow { color: #ff5555; }
+    .approach h2 { color: white; }
+    .approach-intro { margin: 0; color: #d0d0d0; }
+    .principles { border-top: 1px solid rgba(255,255,255,.25); }
+    .principle { display: grid; grid-template-columns: 54px 1fr; gap: 18px; padding: 21px 0; border-bottom: 1px solid rgba(255,255,255,.25); }
+    .principle-number { color: #ff5555; font-family: var(--serif); font-size: 1.2rem; }
+    .principle h3 { margin: 0; color: white; font-family: var(--serif); font-size: 1.35rem; font-weight: 400; }
+    .principle p { margin: 4px 0 0; color: #c8c8c8; font-size: .88rem; }
+
+    .involved { padding: 62px 0; color: white; background: var(--red); }
+    .involved-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .involved h2 { margin: 0 0 8px; color: white; font-family: var(--serif); font-size: clamp(2.1rem, 4vw, 3.1rem); font-weight: 400; line-height: 1.08; }
+    .involved p { max-width: 680px; margin: 0; color: #fff0f0; }
+    .involved-link { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 0 19px; border: 1px solid white; border-radius: 4px; color: white; font-size: .84rem; font-weight: 800; }
+    .involved-link:hover { color: var(--red); background: white; }
+
+    .site-footer { padding: 36px 0 22px; color: #e2e2e2; background: var(--black); }
+    .footer-main { display: flex; align-items: start; justify-content: space-between; gap: 35px; padding-bottom: 25px; }
+    .footer-brand { max-width: 420px; }
+    .footer-brand .brand-copy strong { color: white; }
+    .footer-brand .brand-copy span { color: #c7c7c7; }
+    .footer-brand p { max-width: 365px; margin: 15px 0 0; color: #c8c8c8; font-size: .82rem; }
+    .footer-nav { display: flex; flex-wrap: wrap; justify-content: end; gap: 11px 24px; max-width: 410px; padding-top: 8px; }
+    .footer-nav a { color: #e2e2e2; font-size: .78rem; }
+    .footer-nav a:hover { color: #ff5555; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 18px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.16); color: #aaa; font-size: .7rem; }
+    .footer-bottom p { margin: 0; }
+
+    @media (max-width: 980px) {
+      .header-main { min-height: 76px; }
+      .brand { gap: 10px; }
+      .university-mark { width: 44px; height: 44px; flex-basis: 44px; }
+      .header-right { gap: 17px; }
+      .primary-nav { gap: 14px; }
+      .primary-nav a { font-size: .86rem; }
+      .intro-grid, .approach-grid { gap: 48px; }
+      .page-hero::after { right: 8%; }
+    }
+    @media (max-width: 720px) {
+      html { scroll-padding-top: 74px; }
+      .wrap { width: min(var(--wrap), calc(100% - 36px)); }
+      .utility-inner { min-height: 31px; }
+      .utility-tag { display: none; }
+      .header-main { min-height: 72px; }
+      .header-main { gap: 0; }
+      .brand { gap: 5px; }
+      .brand-mark { width: 52px; height: 52px; flex-basis: 52px; }
+      .university-mark { width: 36px; height: 36px; flex-basis: 36px; }
+      .brand-copy strong { font-size: .9rem; white-space: nowrap; }
+      .brand-copy span { font-size: .59rem; }
+      .header-right { gap: 6px; }
+      .menu-toggle { display: block; order: 2; }
+      .nav-cta { min-height: 39px; padding-inline: 10px; font-size: .73rem; white-space: nowrap; }
+      .primary-nav { position: absolute; top: 100%; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 9px 18px 16px; border-bottom: 1px solid var(--line); background: var(--white); box-shadow: 0 12px 18px rgba(0,0,0,.08); }
+      .primary-nav.is-open { display: flex; flex-direction: column; }
+      .primary-nav a { padding: 12px 4px; border-bottom: 1px solid #e5e5e5; font-size: .92rem; }
+      .page-hero { padding: 58px 0 64px; }
+      .page-hero::after { right: 18px; width: 4px; }
+      .page-hero h1 { max-width: 560px; font-size: clamp(2.8rem, 12vw, 4rem); }
+      .page-hero p { max-width: 100%; font-size: .96rem; }
+      .intro, .approach { padding: 62px 0; }
+      .intro-grid, .approach-grid { grid-template-columns: 1fr; gap: 24px; }
+      .intro h2, .section-heading h2 { font-size: 2.45rem; }
+      .work-section { padding: 62px 0; }
+      .section-heading { margin-bottom: 27px; }
+      .work-grid { grid-template-columns: 1fr; gap: 12px; }
+      .work-card { min-height: 0; padding: 23px 22px 24px; }
+      .work-card h3 { margin-top: 18px; }
+      .work-label { padding-top: 18px; }
+      .involved { padding: 48px 0; }
+      .involved-inner { align-items: start; flex-direction: column; }
+      .footer-main { flex-direction: column; }
+      .footer-nav { justify-content: start; }
+      .footer-bottom { flex-direction: column; gap: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="utility">
+    <div class="wrap utility-inner">
+      <p>Doon University · Dehradun, Uttarakhand</p>
+      <span class="utility-tag">Youth Red Cross</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-main">
+      <a class="brand" href="index.html#home" aria-label="Youth Red Cross, Doon University home">
+        <img class="brand-mark" src="WhatsApp%20Image%202026-10-07%20at%209.26.44%20PM.jpeg" alt="">
+        <span class="brand-copy"><strong>Youth Red Cross</strong><span>Doon University</span></span>
+        <img class="university-mark" src="doon-university-logo.png" alt="Doon University">
+      </a>
+      <div class="header-right">
+        <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+          <a href="index.html#about">About</a>
+          <a href="our%20work.html" aria-current="page">Our work</a>
+          <a href="campuslife.html">Campus life</a>
+          <a href="get%20involve.html">Get involved</a>
+        </nav>
+        <a class="nav-cta" href="join-yrc.html">Join YRC <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero" aria-labelledby="pageTitle">
+      <div class="wrap">
+        <span class="eyebrow">Youth Red Cross · Doon University</span>
+        <h1 id="pageTitle">Practical skills.<br><span>Compassionate action.</span></h1>
+        <p>Our work brings preparedness, health awareness and community service together. Students learn with purpose, act alongside others and help build a more caring community.</p>
+        <a class="hero-link" href="index.html#home">Back to home <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="intro" aria-labelledby="introTitle">
+      <div class="wrap intro-grid">
+        <div>
+          <span class="eyebrow">What guides us</span>
+          <h2 id="introTitle">Service is something we practise together.</h2>
+        </div>
+        <div class="intro-copy">
+          <p>Youth Red Cross at Doon University gives students a place to learn about helping others and to take part in meaningful service. Our work is rooted in care, cooperation and respect for the communities we serve.</p>
+          <p>From building first-aid awareness to sharing health information and supporting outreach, each area offers a practical way to turn concern into thoughtful action.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" aria-labelledby="workTitle">
+      <div class="wrap">
+        <div class="section-heading">
+          <span class="eyebrow">Our focus areas</span>
+          <h2 id="workTitle">Ways we serve</h2>
+          <p>Three connected areas give members different ways to learn, contribute and grow.</p>
+        </div>
+        <div class="work-grid">
+          <article class="work-card">
+            <span class="work-number">01 / Preparedness</span>
+            <h3>First aid &amp; safety</h3>
+            <p>Build confidence and awareness around practical first aid, personal safety and responding thoughtfully when help is needed.</p>
+            <span class="work-label">Learn skills for life</span>
+          </article>
+          <article class="work-card">
+            <span class="work-number">02 / Wellbeing</span>
+            <h3>Health awareness</h3>
+            <p>Encourage informed choices by sharing useful health and wellbeing information in clear, inclusive ways.</p>
+            <span class="work-label">Share what helps</span>
+          </article>
+          <article class="work-card">
+            <span class="work-number">03 / Community</span>
+            <h3>Outreach &amp; service</h3>
+            <p>Take part in community-focused initiatives shaped by local needs, partnership and a spirit of solidarity.</p>
+            <span class="work-label">Act together</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach" aria-labelledby="approachTitle">
+      <div class="wrap approach-grid">
+        <div>
+          <span class="eyebrow">How we work</span>
+          <h2 class="section-heading" id="approachTitle">Care in action, at every step.</h2>
+          <p class="approach-intro">Good service starts by listening and grows through learning, teamwork and reflection.</p>
+        </div>
+        <div class="principles">
+          <article class="principle"><span class="principle-number">01</span><div><h3>Learn with purpose</h3><p>Build understanding and practical confidence before taking action.</p></div></article>
+          <article class="principle"><span class="principle-number">02</span><div><h3>Work together</h3><p>Share responsibility, make space for different strengths and support one another.</p></div></article>
+          <article class="principle"><span class="principle-number">03</span><div><h3>Respect every community</h3><p>Listen first and approach service with dignity, care and openness.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="involved" aria-labelledby="joinTitle">
+      <div class="wrap involved-inner">
+        <div>
+          <h2 id="joinTitle">Interested in getting involved?</h2>
+          <p>Connect with the Youth Red Cross unit at Doon University to learn about membership and upcoming opportunities to take part.</p>
+        </div>
+        <a class="involved-link" href="get%20involve.html">Get in touch <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="index.html#home" aria-label="Youth Red Cross, Doon University home">
+            <img class="brand-mark" src="WhatsApp%20Image%202026-10-07%20at%209.26.44%20PM.jpeg" alt="">
+            <span class="brand-copy"><strong>Youth Red Cross</strong><span>Doon University</span></span>
+          </a>
+          <p>A student community for preparedness, health awareness and service at Doon University.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html#about">About YRC</a><a href="our%20work.html" aria-current="page">Our work</a><a href="campuslife.html">Campus life</a><a href="get%20involve.html">Get involved</a>
+        </nav>
+      </div>
+      <div class="footer-bottom"><p>Youth Red Cross · Doon University, Dehradun</p><p>Service · Health · Friendship</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('#menuToggle');
+    const primaryNav = document.querySelector('#primaryNav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+      primaryNav.classList.toggle('is-open', !isOpen);
+    });
+
+    primaryNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation');
+      });
+    });
+  </script>
+</body>
+</html>

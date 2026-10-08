@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Join Youth Red Cross at Doon University. Share your details and academic information in the application form.">
+  <title>Join YRC | Doon University</title>
+  <style>
+    :root {
+      --red: #c62828;
+      --red-dark: #a61f26;
+      --black: #080808;
+      --ink: #171717;
+      --muted: #626262;
+      --paper: #f5f5f5;
+      --white: #ffffff;
+      --line: #dedede;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Tahoma, sans-serif;
+      --wrap: 1520px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; color: var(--ink); background: var(--white); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .wrap { width: min(var(--wrap), calc(100% - clamp(48px, 6vw, 80px))); margin-inline: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--red); font-size: .72rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { width: 25px; height: 2px; background: currentColor; content: ""; }
+
+    .utility { color: #f2f2f2; background: var(--black); font-size: .76rem; }
+    .utility-inner { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .utility p { margin: 0; }
+    .utility-tag { color: #ff5555; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: var(--white); }
+    .header-main { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-mark { width: 64px; height: 64px; flex: 0 0 64px; display: block; border-radius: 50%; object-fit: cover; }
+    .university-mark { width: 52px; height: 52px; flex: 0 0 52px; display: block; object-fit: contain; }
+    .brand-copy { display: grid; line-height: 1.15; }
+    .brand-copy strong { color: var(--black); font-family: var(--serif); font-size: 1.35rem; }
+    .brand-copy span { margin-top: 5px; color: var(--muted); font-size: .69rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .header-right { display: flex; align-items: center; gap: 28px; }
+    .primary-nav { display: flex; align-items: center; gap: 24px; }
+    .primary-nav a { padding-block: 9px; color: #242424; font-size: .95rem; font-weight: 700; }
+    .primary-nav a:hover, .primary-nav a[aria-current="page"] { color: var(--red); }
+    .nav-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 18px; border-radius: 3px; color: white; background: var(--red); font-size: .8rem; font-weight: 800; }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 3px; color: var(--black); background: transparent; cursor: pointer; }
+    .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; background: currentColor; }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+
+    .page-hero { padding: 57px 0 60px; color: white; background: var(--black); }
+    .page-hero .eyebrow { color: #ff5555; }
+    .page-hero h1 { margin: 15px 0 10px; color: white; font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 400; line-height: 1.05; }
+    .page-hero h1 span { color: #ff5555; }
+    .page-hero p { max-width: 730px; margin: 0; color: #dedede; font-size: 1rem; }
+
+    .application { padding: 58px 0 76px; background: var(--paper); }
+    .application-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; align-items: start; gap: 28px; }
+    .form-panel { padding: 30px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); }
+    .form-heading { margin-bottom: 23px; }
+    .form-heading h2 { margin: 11px 0 8px; color: var(--black); font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.15; }
+    .form-heading p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .demo-notice { margin: 20px 0 24px; padding: 14px 16px; border-left: 4px solid var(--red); color: #393939; background: #f3f3f3; font-size: .83rem; }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 19px 16px; }
+    .field { display: grid; align-content: start; gap: 7px; min-width: 0; }
+    .field-full { grid-column: 1 / -1; }
+    label, legend { color: #252525; font-size: .82rem; font-weight: 700; }
+    .required { color: var(--red); }
+    input, select { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #cfcfcf; border-radius: 4px; color: var(--ink); background: white; }
+    input[type="file"] { min-height: 48px; padding: 8px; font-size: .76rem; }
+    input::placeholder { color: #777; }
+    .field small { color: var(--muted); font-size: .73rem; }
+    fieldset { min-width: 0; margin: 23px 0 0; padding: 20px; border: 1px solid var(--line); border-radius: 6px; }
+    fieldset[hidden] { display: none; }
+    legend { padding: 0 8px; }
+    .fieldset-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .submit-row { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 24px; }
+    .submit-button { min-height: 48px; padding: 0 21px; border: 0; border-radius: 4px; color: white; background: var(--red); font-size: .84rem; font-weight: 800; cursor: pointer; }
+    .submit-button:hover { background: var(--red-dark); }
+    .form-status { flex-basis: 100%; margin: 0; padding: 13px 15px; border-left: 4px solid var(--red); color: #303030; background: #f3f3f3; font-size: .85rem; }
+    .form-status[hidden] { display: none; }
+
+    .requirements { padding: 25px; border-radius: 8px; color: white; background: var(--black); }
+    .requirements .eyebrow { color: #ff5555; }
+    .requirements h2 { margin: 13px 0 10px; color: white; font-family: var(--serif); font-size: 1.75rem; font-weight: 400; line-height: 1.15; }
+    .requirements > p { margin: 0 0 20px; color: #d0d0d0; font-size: .86rem; }
+    .requirements-list { margin: 0; padding: 0; list-style: none; }
+    .requirements-list li { padding: 13px 0; border-top: 1px solid rgba(255,255,255,.2); color: #eee; font-size: .82rem; }
+    .requirements-list strong { display: block; color: white; font-family: var(--serif); font-size: 1.05rem; font-weight: 400; }
+    .requirements-list span { color: #ccc; }
+    .back-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 20px; color: var(--red); font-size: .82rem; font-weight: 800; }
+
+    .site-footer { padding: 28px 0 20px; color: #e2e2e2; background: var(--black); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.18); color: #aaa; font-size: .72rem; }
+    .footer-inner p { margin: 0; }
+    @media (max-width: 980px) {
+      .header-main { min-height: 76px; }
+      .brand { gap: 10px; }
+      .university-mark { width: 44px; height: 44px; flex-basis: 44px; }
+      .header-right { gap: 17px; }
+      .primary-nav { gap: 14px; }
+      .primary-nav a { font-size: .86rem; }
+      .application-grid { grid-template-columns: minmax(0, 1fr) 280px; gap: 18px; }
+      .form-panel { padding: 24px; }
+    }
+    @media (max-width: 720px) {
+      html { scroll-padding-top: 74px; }
+      .wrap { width: min(var(--wrap), calc(100% - 36px)); }
+      .utility-inner { min-height: 31px; }
+      .utility-tag { display: none; }
+      .header-main { min-height: 72px; gap: 0; }
+      .brand { gap: 5px; }
+      .brand-mark { width: 52px; height: 52px; flex-basis: 52px; }
+      .university-mark { width: 36px; height: 36px; flex-basis: 36px; }
+      .brand-copy strong { font-size: .9rem; white-space: nowrap; }
+      .brand-copy span { font-size: .59rem; }
+      .header-right { gap: 6px; }
+      .menu-toggle { display: block; order: 2; }
+      .nav-cta { min-height: 39px; padding-inline: 10px; font-size: .73rem; white-space: nowrap; }
+      .primary-nav { position: absolute; top: 100%; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 9px 18px 16px; border-bottom: 1px solid var(--line); background: var(--white); box-shadow: 0 12px 18px rgba(0,0,0,.08); }
+      .primary-nav.is-open { display: flex; flex-direction: column; }
+      .primary-nav a { padding: 12px 4px; border-bottom: 1px solid #e5e5e5; font-size: .92rem; }
+      .page-hero { padding: 45px 0; }
+      .page-hero h1 { font-size: clamp(2.5rem, 11vw, 3.7rem); }
+      .application { padding: 38px 0 54px; }
+      .application-grid { grid-template-columns: 1fr; }
+      .form-panel { padding: 19px; }
+      .form-heading h2 { font-size: 1.7rem; }
+      .form-grid, .fieldset-grid { grid-template-columns: 1fr; }
+      .field-full { grid-column: auto; }
+      fieldset { padding: 16px; }
+      .requirements { padding: 22px; }
+      .footer-inner { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 360px) { .nav-cta { display: none; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="utility"><div class="wrap utility-inner"><p>Doon University · Dehradun, Uttarakhand</p><span class="utility-tag">Youth Red Cross</span></div></div>
+
+  <header class="site-header">
+    <div class="wrap header-main">
+      <a class="brand" href="index.html#home" aria-label="Youth Red Cross, Doon University home">
+        <img class="brand-mark" src="WhatsApp%20Image%202026-10-07%20at%209.26.44%20PM.jpeg" alt="">
+        <span class="brand-copy"><strong>Youth Red Cross</strong><span>Doon University</span></span>
+        <img class="university-mark" src="doon-university-logo.png" alt="Doon University">
+      </a>
+      <div class="header-right">
+        <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+          <a href="index.html#about">About</a>
+          <a href="our%20work.html">Our work</a>
+          <a href="campuslife.html">Campus life</a>
+          <a href="get%20involve.html">Get involved</a>
+        </nav>
+        <a class="nav-cta" href="#application" aria-current="page">Join YRC <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero" aria-labelledby="pageTitle">
+      <div class="wrap">
+        <span class="eyebrow">Youth Red Cross · Doon University</span>
+        <h1 id="pageTitle">Join <span>Youth Red Cross.</span></h1>
+        <p>Tell us a little about yourself and your studies. Choose your current year so the form shows the right academic details.</p>
+      </div>
+    </section>
+
+    <section class="application" id="application" aria-labelledby="formTitle">
+      <div class="wrap application-grid">
+        <form class="form-panel" id="joinForm">
+          <div class="form-heading">
+            <span class="eyebrow">Membership interest</span>
+            <h2 id="formTitle">Your details</h2>
+            <p>Fields marked <span class="required">*</span> are required.</p>
+          </div>
+          <p class="demo-notice">This is a frontend form preview. Your details and selected files are not sent or saved. Online application submission has not been connected yet.</p>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="fullName">Full name <span class="required">*</span></label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="field">
+              <label for="contactNumber">Contact number <span class="required">*</span></label>
+              <input id="contactNumber" name="contactNumber" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+() -]{7,20}" maxlength="20" placeholder="e.g. +91 98765 43210" required>
+            </div>
+            <div class="field">
+              <label for="department">Department <span class="required">*</span></label>
+              <input id="department" name="department" type="text" autocomplete="organization-title" placeholder="Enter your department" required>
+            </div>
+            <div class="field">
+              <label for="year">Current year <span class="required">*</span></label>
+              <select id="year" name="year" required>
+                <option value="" selected disabled>Select your year</option>
+                <option value="1">First year</option>
+                <option value="2">Second year</option>
+                <option value="3">Third year</option>
+                <option value="4">Fourth year</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset id="firstYearFields" hidden disabled>
+            <legend>Class 12 details</legend>
+            <div class="fieldset-grid">
+              <div class="field">
+                <label for="class12Marks">Class 12 marks <span class="required">*</span></label>
+                <input id="class12Marks" name="class12Marks" type="text" placeholder="e.g. 438/500 or 87.6%" required>
+                <small>Enter your marks and total, or your percentage.</small>
+              </div>
+              <div class="field">
+                <label for="class12Marksheet">Class 12 marksheet photo <span class="required">*</span></label>
+                <input id="class12Marksheet" name="class12Marksheet" type="file" accept="image/*" required>
+                <small>Choose a clear image of your marksheet.</small>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset id="continuingFields" hidden disabled>
+            <legend>Current academic details</legend>
+            <div class="fieldset-grid">
+              <div class="field">
+                <label for="cgpa">Current CGPA <span class="required">*</span></label>
+                <input id="cgpa" name="cgpa" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter your CGPA" required>
+              </div>
+              <div class="field">
+                <label for="cgpaPhoto">CGPA proof photo <span class="required">*</span></label>
+                <input id="cgpaPhoto" name="cgpaPhoto" type="file" accept="image/*" required>
+                <small>Choose a clear image showing your current CGPA.</small>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="submit-row">
+            <button class="submit-button" type="submit">Check application details</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+          </div>
+        </form>
+
+        <aside class="requirements" aria-labelledby="requirementsTitle">
+          <span class="eyebrow">Before you begin</span>
+          <h2 id="requirementsTitle">Choose the details for your year.</h2>
+          <p>The academic section changes based on the year you select.</p>
+          <ul class="requirements-list">
+            <li><strong>First year</strong><span>Class 12 marks and marksheet photo</span></li>
+            <li><strong>Second year and above</strong><span>Current CGPA and proof photo</span></li>
+            <li><strong>All applicants</strong><span>Name, contact number, department and year</span></li>
+          </ul>
+          <a class="back-link" href="get%20involve.html">About getting involved <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><p>Youth Red Cross · Doon University, Dehradun</p><p>Service · Health · Friendship</p></div></footer>
+
+  <script>
+    const menuToggle = document.querySelector('#menuToggle');
+    const primaryNav = document.querySelector('#primaryNav');
+    const yearSelect = document.querySelector('#year');
+    const firstYearFields = document.querySelector('#firstYearFields');
+    const continuingFields = document.querySelector('#continuingFields');
+    const joinForm = document.querySelector('#joinForm');
+    const formStatus = document.querySelector('#formStatus');
+
+    const updateAcademicFields = () => {
+      const hasYear = yearSelect.value !== '';
+      const isFirstYear = yearSelect.value === '1';
+      firstYearFields.hidden = !isFirstYear;
+      firstYearFields.disabled = !isFirstYear;
+      continuingFields.hidden = !hasYear || isFirstYear;
+      continuingFields.disabled = !hasYear || isFirstYear;
+    };
+
+    yearSelect.addEventListener('change', updateAcademicFields);
+    joinForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      formStatus.textContent = 'The required details are complete, but this frontend does not send or save applications. Please contact the Doon University Youth Red Cross unit to submit your information.';
+      formStatus.hidden = false;
+    });
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+      primaryNav.classList.toggle('is-open', !isOpen);
+    });
+
+    primaryNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation');
+      });
+    });
+  </script>
+</body>
+</html>
