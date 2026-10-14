@@ -7,9 +7,9 @@ const port = Number(process.env.PORT) || 3000;
 app.use(express.static(__dirname, { extensions: ['html'] }));
 app.use('/api/applications', applicationApi);
 
-app.get('/api/health', (_request, response) => {
-  const configured = Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
-  response.status(configured ? 200 : 503).json({ status: configured ? 'configured' : 'supabase_not_configured' });
+app.get('/api/health', (request, response, next) => {
+  request.url = '/';
+  applicationApi(request, response, next);
 });
 
 app.listen(port, '127.0.0.1', () => {

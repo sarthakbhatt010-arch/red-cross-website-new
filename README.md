@@ -28,7 +28,7 @@ Static site pages and a Supabase-backed YRC application form.
    npm start
    ```
 
-6. Open `http://127.0.0.1:3000/join-yrc.html` and check `http://127.0.0.1:3000/api/health` reports `configured`.
+6. Open `http://127.0.0.1:3000/join-yrc.html` and check `http://127.0.0.1:3000/api/health` reports `ready` with both `database` and `storage` set to `ready`.
 
 Applications are inserted into `public.yrc_applications`. Uploaded academic images go into the private `yrc-application-documents` bucket. The API accepts JPG, PNG, and WebP images up to 4 MB to stay below Vercel's request-size limit.
 
