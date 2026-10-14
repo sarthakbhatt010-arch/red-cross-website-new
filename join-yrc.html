@@ -187,7 +187,7 @@
             </div>
             <div class="field">
               <label for="contactNumber">Contact number <span class="required">*</span></label>
-              <input id="contactNumber" name="contactNumber" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9+() -]{7,20}" maxlength="20" placeholder="e.g. +91 98765 43210" required>
+              <input id="contactNumber" name="contactNumber" type="tel" autocomplete="tel" inputmode="tel" pattern="\+?[0-9 ]{7,20}" maxlength="20" placeholder="e.g. +91 98765 43210" required>
             </div>
             <div class="field">
               <label for="department">Department <span class="required">*</span></label>
@@ -216,7 +216,7 @@
               </div>
               <div class="field">
                 <label for="class12Marksheet">Class 12 marksheet photo <span class="required">*</span></label>
-                <input id="class12Marksheet" name="class12Marksheet" type="file" accept="image/*" required>
+                <input id="class12Marksheet" name="class12Marksheet" type="file" accept="image/jpeg,image/png,image/webp" required>
                 <small>Choose a clear image of your marksheet.</small>
               </div>
             </div>
@@ -231,7 +231,7 @@
               </div>
               <div class="field">
                 <label for="cgpaPhoto">CGPA proof photo <span class="required">*</span></label>
-                <input id="cgpaPhoto" name="cgpaPhoto" type="file" accept="image/*" required>
+                <input id="cgpaPhoto" name="cgpaPhoto" type="file" accept="image/jpeg,image/png,image/webp" required>
                 <small>Choose a clear image showing your current CGPA.</small>
               </div>
             </div>
@@ -269,6 +269,7 @@
     const joinForm = document.querySelector('#joinForm');
     const formStatus = document.querySelector('#formStatus');
     const submitButton = document.querySelector('#submitButton');
+    const maximumImageBytes = 4 * 1024 * 1024;
 
     const updateAcademicFields = () => {
       const hasYear = yearSelect.value !== '';
@@ -282,6 +283,16 @@
     yearSelect.addEventListener('change', updateAcademicFields);
     joinForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+      const imageInput = yearSelect.value === '1'
+        ? document.querySelector('#class12Marksheet')
+        : document.querySelector('#cgpaPhoto');
+      const image = imageInput.files[0];
+      if (image && image.size > maximumImageBytes) {
+        formStatus.textContent = 'That image is larger than 4 MB. Choose a smaller JPG, PNG, or WebP image and try again.';
+        formStatus.hidden = false;
+        return;
+      }
+
       formStatus.hidden = false;
       formStatus.textContent = 'Submitting your application...';
       submitButton.disabled = true;
@@ -291,7 +302,16 @@
           method: 'POST',
           body: new FormData(joinForm)
         });
-        const result = await response.json();
+        const responseText = await response.text();
+        let result;
+        try {
+          result = JSON.parse(responseText);
+        } catch {
+          if (response.status === 413 || /request entity|request too large/i.test(responseText)) {
+            throw new Error('That image is too large for upload. Choose a smaller JPG, PNG, or WebP image under 4 MB.');
+          }
+          throw new Error('The application service returned an unexpected response. Please try again later.');
+        }
         if (!response.ok) throw new Error(result.error || 'The application could not be saved.');
 
         formStatus.textContent = `${result.message} Reference: ${result.applicationId}`;
