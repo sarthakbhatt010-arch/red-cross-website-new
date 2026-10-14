@@ -5,16 +5,30 @@ Static site pages and a Supabase-backed YRC application form.
 ## Supabase setup
 
 1. Create or select a Supabase project.
-2. In the Supabase SQL Editor, run [`supabase/schema.sql`](supabase/schema.sql). This creates the `yrc_applications` table, enables row-level security without public policies, and creates the private `yrc-application-documents` Storage bucket.
-3. Copy `.env.example` to `.env` for local development and fill in the project URL and server-only service role key.
-4. Install dependencies and run the site:
+2. Log in to the CLI and link this folder to your project:
+
+   ```powershell
+   npx supabase login
+   npx supabase link --project-ref xbqhnjndzvuudmxcvekj
+   ```
+
+   Enter the Supabase access token and database password directly in the terminal when prompted. Do not put either in source files. The direct PostgreSQL connection string is for CLI/database access only; the web app uses the Supabase HTTPS URL and server key.
+3. Apply the migration to the linked project:
+
+   ```powershell
+   npx supabase db push
+   ```
+
+   This creates the `yrc_applications` table, enables row-level security without public policies, and creates the private `yrc-application-documents` Storage bucket.
+4. Copy `.env.example` to `.env` for local development and fill in `SUPABASE_SERVICE_ROLE_KEY` with the server-only service role/secret key from Supabase API settings. The `sb_publishable_...` key is not a substitute for this server secret.
+5. Install dependencies and run the site:
 
    ```powershell
    npm install
    npm start
    ```
 
-5. Open `http://127.0.0.1:3000/join-yrc.html` and check `http://127.0.0.1:3000/api/health` reports `configured`.
+6. Open `http://127.0.0.1:3000/join-yrc.html` and check `http://127.0.0.1:3000/api/health` reports `configured`.
 
 Applications are inserted into `public.yrc_applications`. Uploaded academic images go into the private `yrc-application-documents` bucket. The API accepts JPG, PNG, and WebP images up to 4 MB to stay below Vercel's request-size limit.
 
