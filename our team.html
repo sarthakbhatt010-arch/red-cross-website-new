@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Meet the leadership, faculty advisors, and student executive team of the Youth Red Cross at Doon University.">
+  <title>Our Team | Youth Red Cross · Doon University</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171717;
+      --forest: #171717;
+      --forest-deep: #080808;
+      --black: #080808;
+      --red: #c62828;
+      --red-dark: #a61f26;
+      --accent: #c62828;
+      --paper: #ffffff;
+      --white: #ffffff;
+      --line: #dedede;
+      --muted: #626262;
+      --bg-soft: #f7f7f8;
+      --bg-card: #ffffff;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Tahoma, sans-serif;
+      --wrap: 1520px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(var(--wrap), calc(100% - clamp(48px, 6vw, 80px))); margin-inline: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--red); font-size: .72rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { width: 25px; height: 2px; background: currentColor; content: ""; }
+
+    /* Utility Bar */
+    .utility { color: #f2f2f2; background: var(--black); font-size: .76rem; }
+    .utility-inner { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .utility p { margin: 0; }
+    .utility-tag { color: #ff5555; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+
+    /* Sticky Header */
+    .site-header { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid var(--line); background: var(--white); }
+    .header-main { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-mark { width: 64px; height: 64px; flex: 0 0 64px; display: block; border-radius: 50%; object-fit: cover; }
+    .university-mark { width: 52px; height: 52px; flex: 0 0 52px; display: block; object-fit: contain; }
+    .brand-copy { display: grid; line-height: 1.15; }
+    .brand-copy strong { color: var(--black); font-family: var(--serif); font-size: 1.35rem; }
+    .brand-copy span { margin-top: 5px; color: var(--muted); font-size: .69rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .header-right { display: flex; align-items: center; gap: 28px; }
+    .primary-nav { display: flex; align-items: center; gap: 24px; }
+    .primary-nav a { padding-block: 9px; color: #242424; font-size: .95rem; font-weight: 700; }
+    .primary-nav a:hover, .primary-nav a[aria-current="page"] { color: var(--red); }
+    .nav-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 18px; border-radius: 3px; color: white; background: var(--red); font-size: .8rem; font-weight: 800; transition: background .2s, transform .2s; }
+    .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 3px; color: var(--black); background: transparent; cursor: pointer; }
+    .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; background: currentColor; }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+
+    /* Page Hero */
+    .page-hero { position: relative; overflow: hidden; padding: 86px 0 90px; color: white; background: var(--black); }
+    .page-hero::after { position: absolute; top: 0; right: 15%; width: 8px; height: 100%; background: var(--red); content: ""; }
+    .page-hero .wrap { position: relative; z-index: 1; }
+    .page-hero .eyebrow { color: #ff5555; }
+    .page-hero h1 { max-width: 860px; margin: 18px 0 20px; font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.6rem); font-weight: 400; line-height: 1.02; }
+    .page-hero h1 span { color: #ff5555; }
+    .page-hero p { max-width: 720px; margin: 0; color: #dedede; font-size: 1.08rem; }
+    .hero-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 27px; color: white; font-size: .86rem; font-weight: 800; }
+    .hero-link span { color: #ff5555; font-size: 1.2rem; }
+
+    /* Hierarchy Navigation Bar */
+    .hierarchy-nav-bar { background: #f0f0f2; border-bottom: 1px solid var(--line); padding: 18px 0; }
+    .hierarchy-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .hierarchy-crumbs span.crumb-label { color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+    .hierarchy-crumbs a { color: var(--ink); padding: 5px 12px; border-radius: 20px; background: white; border: 1px solid var(--line); transition: all .2s ease; }
+    .hierarchy-crumbs a:hover { color: white; background: var(--red); border-color: var(--red); }
+    .hierarchy-crumbs a .crumb-step { color: var(--red); font-size: .7rem; margin-right: 4px; font-weight: 800; }
+    .hierarchy-crumbs a:hover .crumb-step { color: white; }
+
+    /* Hierarchy Structure & Flow */
+    .team-hierarchy { padding: 70px 0 90px; }
+    .hierarchy-tier { position: relative; margin-bottom: 70px; }
+    .tier-header { max-width: 720px; margin-bottom: 28px; }
+    .tier-header h2 { margin: 10px 0 8px; color: var(--forest); font-family: var(--serif); font-size: clamp(2.2rem, 3.8vw, 3.2rem); font-weight: 400; line-height: 1.08; }
+    .tier-header p { margin: 0; color: var(--muted); font-size: .98rem; }
+
+    /* Hierarchy Vertical Connector Line */
+    .hierarchy-connector { display: flex; justify-content: center; align-items: center; height: 50px; position: relative; }
+    .hierarchy-connector::before { content: ""; position: absolute; top: 0; bottom: 0; width: 2px; background: repeating-linear-gradient(to bottom, var(--line) 0, var(--line) 6px, transparent 6px, transparent 12px); }
+    .hierarchy-connector-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--red); border: 3px solid var(--paper); box-shadow: 0 0 0 1px var(--line); z-index: 1; }
+
+    /* Featured Leadership Cards (Directed by, Faculty assign, Head) */
+    .leader-card-wrap { max-width: 980px; margin: 0 auto; }
+    .leader-card { display: grid; grid-template-columns: 280px 1fr; background: var(--bg-card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.05); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .leader-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,.1); border-color: rgba(198,40,40,.35); }
+    
+    .leader-photo-frame { position: relative; width: 100%; height: 100%; min-height: 320px; overflow: hidden; background: #eaeaea; }
+    .leader-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; transition: transform .35s ease; }
+    .leader-card:hover .leader-photo { transform: scale(1.03); }
+    
+    .leader-badge { position: absolute; top: 16px; left: 16px; background: var(--forest-deep); color: white; padding: 5px 12px; border-radius: 4px; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .leader-badge.accent { background: var(--red); }
+
+    .leader-card-body { padding: 36px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .leader-name { margin: 0 0 6px; color: var(--forest); font-family: var(--serif); font-size: 2rem; font-weight: 400; line-height: 1.15; }
+    .leader-position { display: inline-block; color: var(--red); font-size: .82rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; }
+    .leader-intro { margin: 0; color: #4a4a4a; font-size: .98rem; line-height: 1.65; }
+
+    /* Core Team Carousel Section */
+    .carousel-section { background: var(--bg-soft); padding: 80px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; }
+    .carousel-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+    .carousel-head .tier-header { margin-bottom: 0; }
+    
+    .carousel-nav-controls { display: flex; align-items: center; gap: 10px; }
+    .carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: white; color: var(--forest); display: grid; place-items: center; font-size: 1.4rem; cursor: pointer; transition: all .2s ease; box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+    .carousel-btn:hover:not(:disabled) { background: var(--red); color: white; border-color: var(--red); transform: translateY(-2px); }
+    .carousel-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+    .carousel-container { position: relative; width: 100%; overflow: hidden; padding: 8px 4px 18px; }
+    .carousel-track { display: flex; gap: 24px; transition: transform .45s cubic-bezier(.25, 1, .5, 1); will-change: transform; }
+
+    /* Standard Card Format: Photo, Name, Position, Short Introduction */
+    .team-card { flex: 0 0 calc((100% - 48px) / 3); background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 14px rgba(0,0,0,.04); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .team-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.09); border-color: rgba(198,40,40,.3); }
+
+    .team-photo-wrap { position: relative; width: 100%; aspect-ratio: 4 / 4.4; background: #e8e8e8; overflow: hidden; }
+    .team-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; transition: transform .35s ease; }
+    .team-card:hover .team-photo { transform: scale(1.04); }
+
+    .team-card-content { padding: 22px 22px 26px; display: flex; flex-direction: column; flex-grow: 1; }
+    .team-name { margin: 0 0 6px; color: var(--forest); font-family: var(--serif); font-size: 1.38rem; font-weight: 400; line-height: 1.2; }
+    .team-position { display: block; color: var(--red); font-size: .75rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 12px; }
+    .team-intro { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+
+    /* Carousel Pagination Dots */
+    .carousel-dots-wrap { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 28px; }
+    .carousel-dot { width: 28px; height: 28px; padding: 0; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; }
+    .carousel-dot span { width: 8px; height: 8px; border-radius: 50%; background: #c5c5c5; transition: all .2s ease; }
+    .carousel-dot[aria-pressed="true"] span { background: var(--red); transform: scale(1.4); }
+
+    /* Involvement Strip */
+    .involved-strip { padding: 64px 0; background: var(--forest-deep); color: white; }
+    .involved-strip-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .involved-strip-copy h2 { margin: 8px 0 10px; font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 2.9rem); font-weight: 400; line-height: 1.1; }
+    .involved-strip-copy p { margin: 0; color: #d0d0d0; max-width: 620px; font-size: .96rem; }
+    .involved-btn { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 24px; border: 1px solid white; border-radius: 4px; color: white; font-size: .84rem; font-weight: 800; transition: all .2s; }
+    .involved-btn:hover { background: white; color: var(--forest-deep); }
+
+    /* Site Footer */
+    .site-footer { padding: 38px 0 22px; color: #e2e2e2; background: #080808; }
+    .footer-main { display: flex; align-items: start; justify-content: space-between; gap: 35px; padding-bottom: 27px; }
+    .footer-brand { max-width: 420px; }
+    .footer-brand .brand-copy strong { color: white; }
+    .footer-brand .brand-copy span { color: #c7c7c7; }
+    .footer-brand p { max-width: 365px; margin: 17px 0 0; color: #c8c8c8; font-size: .82rem; }
+    .footer-nav { display: flex; flex-wrap: wrap; justify-content: end; gap: 11px 24px; max-width: 460px; padding-top: 8px; }
+    .footer-nav a { color: #e2e2e2; font-size: .78rem; }
+    .footer-nav a:hover, .footer-nav a[aria-current="page"] { color: #ff5555; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 18px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.16); color: #aaaaaa; font-size: .7rem; }
+    .footer-bottom p { margin: 0; }
+
+    /* Responsive Queries */
+    @media (max-width: 1080px) {
+      .team-card { flex: 0 0 calc((100% - 24px) / 2); }
+    }
+    @media (max-width: 980px) {
+      .header-main { min-height: 76px; }
+      .brand { gap: 10px; }
+      .university-mark { width: 44px; height: 44px; flex-basis: 44px; }
+      .header-right { gap: 17px; }
+      .primary-nav { gap: 14px; }
+      .primary-nav a { font-size: .86rem; }
+      .leader-card { grid-template-columns: 240px 1fr; }
+      .leader-card-body { padding: 28px; }
+    }
+    @media (max-width: 720px) {
+      html { scroll-padding-top: 74px; }
+      .wrap { width: min(var(--wrap), calc(100% - 36px)); }
+      .utility-inner { min-height: 31px; }
+      .utility p { font-size: .68rem; }
+      .utility-tag { display: none; }
+      .header-main { min-height: 72px; gap: 0; }
+      .brand { gap: 5px; }
+      .brand-mark { width: 52px; height: 52px; flex-basis: 52px; }
+      .university-mark { width: 36px; height: 36px; flex-basis: 36px; }
+      .brand-copy strong { font-size: .9rem; white-space: nowrap; }
+      .brand-copy span { font-size: .59rem; }
+      .header-right { gap: 6px; }
+      .menu-toggle { display: block; order: 2; }
+      .nav-cta { min-height: 39px; padding-inline: 10px; font-size: .73rem; white-space: nowrap; }
+      .primary-nav { position: absolute; top: 100%; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 9px 18px 16px; border-bottom: 1px solid var(--line); background: var(--white); box-shadow: 0 12px 18px rgba(0,0,0,.08); }
+      .primary-nav.is-open { display: flex; flex-direction: column; }
+      .primary-nav a { padding: 12px 4px; border-bottom: 1px solid #e5e5e5; font-size: .92rem; }
+      
+      .page-hero { padding: 58px 0 64px; }
+      .page-hero::after { right: 18px; width: 4px; }
+      .page-hero h1 { font-size: clamp(2.8rem, 12vw, 4rem); }
+      .page-hero p { font-size: .96rem; }
+
+      .hierarchy-crumbs { justify-content: center; }
+      .leader-card { grid-template-columns: 1fr; }
+      .leader-photo-frame { height: 300px; min-height: auto; }
+      .leader-card-body { padding: 24px 20px; }
+      .leader-name { font-size: 1.65rem; }
+
+      .carousel-section { padding: 60px 0; }
+      .carousel-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .team-card { flex: 0 0 100%; }
+
+      .involved-strip-inner { flex-direction: column; align-items: flex-start; }
+      .footer-main { flex-direction: column; }
+      .footer-nav { justify-content: start; }
+      .footer-bottom { flex-direction: column; gap: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="utility">
+    <div class="wrap utility-inner">
+      <p>Doon University · Dehradun, Uttarakhand</p>
+      <span class="utility-tag">Youth Red Cross</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-main">
+      <a class="brand" href="index.html#home" aria-label="Youth Red Cross, Doon University home">
+        <img class="brand-mark" src="WhatsApp%20Image%202026-10-07%20at%209.26.44%20PM.jpeg" alt="">
+        <span class="brand-copy"><strong>Youth Red Cross</strong><span>Doon University</span></span>
+        <img class="university-mark" src="doon-university-logo.png" alt="Doon University">
+      </a>
+      <div class="header-right">
+        <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about">About Us</a>
+          <a href="our%20work.html">Our Work</a>
+          <a href="our%20team.html" aria-current="page">Our Team</a>
+          <a href="campuslife.html">Campus Life</a>
+          <a href="get%20involve.html">Get Involved</a>
+        </nav>
+        <a class="nav-cta" href="join-yrc.html">Join YRC <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="pageTitle">
+      <div class="wrap">
+        <span class="eyebrow">Leadership & Organization · Doon University</span>
+        <h1 id="pageTitle">Our Team.<br><span>United by purpose.</span></h1>
+        <p>Meet the university patron, faculty advisor, student head, and executive core team steering the Youth Red Cross chapter at Doon University with empathy and civic dedication.</p>
+        <a class="hero-link" href="index.html#home">Back to home <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- Hierarchy Quick Navigation Bar -->
+    <nav class="hierarchy-nav-bar" aria-label="Team hierarchy navigation">
+      <div class="wrap hierarchy-crumbs">
+        <span class="crumb-label">Hierarchy:</span>
+        <a href="#directed-by"><span class="crumb-step">01</span>Directed by</a>
+        <a href="#faculty-assign"><span class="crumb-step">02</span>Faculty assign</a>
+        <a href="#head"><span class="crumb-step">03</span>Head</a>
+        <a href="#core-team"><span class="crumb-step">04</span>Core Team</a>
+        <a href="#other-members"><span class="crumb-step">05</span>Other members</a>
+      </div>
+    </nav>
+
+    <div class="team-hierarchy wrap">
+
+      <!-- Tier 1: Directed by (VC) -->
+      <section class="hierarchy-tier" id="directed-by" aria-labelledby="directedByTitle">
+        <div class="tier-header">
+          <span class="eyebrow">Level 01 · Patronage & Vision</span>
+          <h2 id="directedByTitle">Directed by</h2>
+          <p>Institutional leadership guiding the vision, humanitarian commitment, and values of the Youth Red Cross.</p>
+        </div>
+        <div class="leader-card-wrap">
+          <article class="leader-card">
+            <div class="leader-photo-frame">
+              <img class="leader-photo" src="team-assets/vc_new_image.jpg" alt="Photo of Vice Chancellor - Directed by" loading="lazy" data-initials="VC">
+              <span class="leader-badge accent">Directed by</span>
+            </div>
+            <div class="leader-card-body">
+              <h3 class="leader-name">Prof. Surekha Dangwal (Vice-Chancellor)</h3>
+              <span class="leader-position">VC · Patron, Youth Red Cross Doon University</span>
+              <p class="leader-intro">Directing the strategic vision, institutional ethos, and community engagement of the Youth Red Cross unit at Doon University, championing youth volunteerism, humanitarian ethics, and community health preparedness across the state.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Flow Connector -->
+      <div class="hierarchy-connector" aria-hidden="true">
+        <div class="hierarchy-connector-dot"></div>
+      </div>
+
+      <!-- Tier 2: Faculty assign -->
+      <section class="hierarchy-tier" id="faculty-assign" aria-labelledby="facultyAssignTitle">
+        <div class="tier-header">
+          <span class="eyebrow">Level 02 · Institutional Coordination</span>
+          <h2 id="facultyAssignTitle">Faculty assign</h2>
+          <p>Academic mentorship aligning student service drives with university standards and Red Cross protocols.</p>
+        </div>
+        <div class="leader-card-wrap">
+          <article class="leader-card">
+            <div class="leader-photo-frame">
+              <img class="leader-photo" src="team-assets/faculty_dr_vaishali.jpg" alt="Photo of Dr. Vaishali - Faculty assign" loading="lazy" data-initials="JD">
+              <span class="leader-badge">Faculty assign</span>
+            </div>
+            <div class="leader-card-body">
+              <h3 class="leader-name">Dr. Vaishali</h3>
+              <span class="leader-position">Faculty Assign · Advisory In-Charge</span>
+              <p class="leader-intro">Overseeing the Youth Red Cross chapter at Doon University, facilitating administrative coordination, mentoring student leadership, and ensuring all community drives and first-aid workshops adhere to official Red Cross guidelines.</p>
+            </div>
+          </article>
+        </div>
+        <div class="leader-card-wrap">
+          <article class="leader-card">
+            <div class="leader-photo-frame">
+              <img class="leader-photo" src="team-assets/faculty_dr_vaishali.jpg" alt="Photo of Dr. Vaishali - Faculty assign" loading="lazy" data-initials="JD">
+              <span class="leader-badge">Faculty assign</span>
+            </div>
+            <div class="leader-card-body">
+              <h3 class="leader-name">Mr. Anshuman</h3>
+              <span class="leader-position">Faculty Assign · Advisory In-Charge</span>
+              <p class="leader-intro">Overseeing the Youth Red Cross chapter at Doon University, facilitating administrative coordination, mentoring student leadership, and ensuring all community drives and first-aid workshops adhere to official Red Cross guidelines.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Flow Connector -->
+      <div class="hierarchy-connector" aria-hidden="true">
+        <div class="hierarchy-connector-dot"></div>
+      </div>
+
+      <!-- Tier 3: Head (Sarthak Bhatt) -->
+      <section class="hierarchy-tier" id="head" aria-labelledby="headTitle">
+        <div class="tier-header">
+          <span class="eyebrow">Level 03 · Student Leadership</span>
+          <h2 id="headTitle">Head</h2>
+          <p>Student executive lead organizing volunteer chapters and driving humanitarian initiatives across campus.</p>
+        </div>
+        <div class="leader-card-wrap">
+          <article class="leader-card">
+            <div class="leader-photo-frame">
+              <img class="leader-photo" src="team-assets/sarthak_bhatt.jpeg" alt="Photo of Sarthak Bhatt - Head" loading="lazy" data-initials="SB">
+              <span class="leader-badge accent">Student Head</span>
+            </div>
+            <div class="leader-card-body">
+              <h3 class="leader-name">Sarthak Bhatt</h3>
+              <span class="leader-position">Head · Youth Red Cross</span>
+              <p class="leader-intro">I am Sarthak Bhatt, a student at Doon University with experience in managing teams, organising large-scale events, and coordinating institutional activities. I led the organisation of a 36-hour SIH event involving 240 students and a major technical seminar at SOT. Currently, I serve as Student Coordinator of the Placement Cell (Sot Doon University) and Technical Coordinator of the AWS Builder Group SoT Doon University, while also contributing to NSS and E-Cell, Doon University. I aspire to bring my leadership, team management, and organisational skills to the Red Cross, contributing towards humanitarian service and making a meaningful difference in society.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div><!-- /.team-hierarchy -->
+
+    <!-- Tier 4: Core Team (Carousel) -->
+    <section class="carousel-section" id="core-team" aria-labelledby="coreTeamTitle">
+      <div class="wrap">
+        <div class="carousel-head">
+          <div class="tier-header">
+            <span class="eyebrow">Level 04 · Executive Council</span>
+            <h2 id="coreTeamTitle">Core Team</h2>
+            <p>The student executive council driving daily operations, logistics, outreach, finances, and technical infrastructure.</p>
+          </div>
+          <div class="carousel-nav-controls" role="group" aria-label="Core team carousel controls">
+            <button class="carousel-btn" id="carouselPrev" type="button" aria-label="Previous core team members"></button>
+            <button class="carousel-btn" id="carouselNext" type="button" aria-label="Next core team members"></button>
+          </div>
+        </div>
+
+        <div class="carousel-container" aria-roledescription="carousel" aria-label="Core Team Members Carousel">
+          <div class="carousel-track" id="carouselTrack">
+
+            <!-- 1. Vice President -->
+            <article class="team-card carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 7: Vice President">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="team-assets/vp_abhinav.jpeg" alt="Photo of Abhinav Gairola - Vice President" loading="lazy" data-initials="VP">
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-name">Abhinav Gairola</h3>
+                <span class="team-position">Vice President</span>
+                <p class="team-intro">I am Abhinav Gairola, with over two years of volunteering experience with NSS, Doon University. I have participated in the SDRF Yuva Aapda Mitra programme and NIC Jaipur 2025. I am passionate about social service, event management, and public speaking, and look forward to contributing to humanitarian initiatives through the Red Cross Society.</p>
+              </div>
+            </article>
+
+            <!-- 3. Director of Operations -->
+            <article class="team-card carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 7: Director of Operations">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="team-assets/ops_jalaj.jpeg" alt="Photo of Jalaj Kotnala - Director of Operations" loading="lazy" data-initials="DO">
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-name">Jalaj Kotnala</h3>
+                <span class="team-position">Director of Operations</span>
+                <p class="team-intro">I am Jalaj Kotnala, with experience in strategic planning, architectural development, and project management. I serve as Student Coordinator at the Career and Placement Cell, SoT, Doon University, and Director of Partnerships and Outreach at AWS Builder Group, SoT, Doon University. I have contributed to organising SIH 2026 at Doon University and have been involved in planning and managing various events and technical projects. I am passionate about humanitarian service, community welfare, and creating a meaningful social impact through the Youth Red Cross Society.</p>
+              </div>
+            </article>
+
+            <!-- 4. General Secretary -->
+            <article class="team-card carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 7: General Secretary">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="team-assets/sec_divyanshi.jpeg" alt="Photo of Divyanshi Bhatt - General Secretary" loading="lazy" data-initials="GS">
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-name">Divyanshi Bhatt</h3>
+                <span class="team-position">General Secretary</span>
+                <p class="team-intro">I am Divyanshi Bhatt, with over two years of volunteering experience with NSS, Doon University. I have participated in the NIC Odisha 2026 and passionate about social service, event management, and public speaking. I aspire to contribute to humanitarian initiatives through the Red Cross Society, promoting compassion, community welfare, and service to society.</p>
+              </div>
+            </article>
+
+            <!-- 5. Joint Secretary -->
+            <article class="team-card carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 7: Joint Secretary">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="team-assets/jsec_krishna.jpeg" alt="Photo of Krishna Panwar - Joint Secretary" loading="lazy" data-initials="JS">
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-name">Krishna Panwar</h3>
+                <span class="team-position">Joint Secretary</span>
+                <p class="team-intro">I'm Krishna Panwar, a B.Tech Computer Science student at Doon University, Dehradun, serving as Director of Engagement & Marketing at the AWS Student Builder Group and Media Coordinator at the Placement Cell, School of Technology. I'm an active member of the university's Entrepreneurship Cell, a former Campus Ambassador for Techfest, IIT Bombay, and a proud NSS Volunteer, My Bharat Volunteer, and Delegate for Yuva Sangam Phase VII. I'm passionate about technology, entrepreneurship, leadership, media, and community development.</p>
+              </div>
+            </article>
+
+            <!-- 6. Treasurer -->
+            <article class="team-card carousel-slide" role="group" aria-roledescription="slide" aria-label="6 of 7: Treasurer">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="team-assets/trs_akash.jpeg" alt="Photo of Akash Rawat - Treasurer" loading="lazy" data-initials="TR">
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-name">Akash Rawat</h3>
+                <span class="team-position">Treasurer</span>
+                <p class="team-intro">I am Akash Rawat, student with a keen interest in leadership, financial management, and community service. I have previously served as the Head of Finance at my university’s Entrepreneurship Cell and am an active NSS volunteer, having participated in various camps, including an SDRF Disaster Management Camp. I also represented Uttarakhand in Yuva Sangam Phase VII, a Ministry of Education initiative, through a seven-day educational and cultural exchange programme in West Bengal. I aspire to uphold accountability, teamwork, and humanitarian values while contributing meaningfully to the society.</p>
+              </div>
+            </article>
+
+            <!-- 7. Technical Head -->
+            <article class="team-card carousel-slide" role="group" aria-roledescription="slide" aria-label="7 of 7: Technical Head">
+              <div class="team-photo-wrap">
+                <img class="team-photo" src="team-assets/th_aamna.jpeg" alt="Photo of Aamna Sarfraz - Technical Head" loading="lazy" data-initials="TH">
+              </div>
+              <div class="team-card-content">
+                <h3 class="team-name">Aamna Sarfraz</h3>
+                <span class="team-position">Technical Head</span>
+                <p class="team-intro">Maintains the official website and digital infrastructure, manages online application databases, and provides multimedia and technical support for all YRC initiatives.</p>
+              </div>
+            </article>
+
+          </div><!-- /.carousel-track -->
+        </div><!-- /.carousel-container -->
+
+        <!-- Carousel Pagination Dots -->
+        <div class="carousel-dots-wrap" id="carouselDots" role="group" aria-label="Carousel slide selectors"></div>
+      </div>
+    </section>
+
+    <!-- Involvement Strip -->
+    <section class="involved-strip">
+      <div class="wrap involved-strip-inner">
+        <div class="involved-strip-copy">
+          <span class="eyebrow" style="color: #ff5555;">Ready to make an impact?</span>
+          <h2>Join hands with Youth Red Cross.</h2>
+          <p>Whether you want to learn life-saving first-aid skills, organize health awareness campaigns, or lead community service, there is a place for you on our team.</p>
+        </div>
+        <a class="involved-btn" href="join-yrc.html">Apply to Join YRC <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="index.html#home" aria-label="Youth Red Cross, Doon University home">
+            <img class="brand-mark" src="WhatsApp%20Image%202026-10-07%20at%209.26.44%20PM.jpeg" alt="">
+            <span class="brand-copy"><strong>Youth Red Cross</strong><span>Doon University</span></span>
+          </a>
+          <p>A student community for preparedness, health awareness and service at Doon University.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html#about">About YRC</a>
+          <a href="our%20work.html">Our work</a>
+          <a href="our%20team.html" aria-current="page">Our team</a>
+          <a href="campuslife.html">Campus life</a>
+          <a href="get%20involve.html">Get involved</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>Youth Red Cross · Doon University, Dehradun</p>
+        <p>Service · Health · Friendship</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation toggle for mobile
+    const menuToggle = document.querySelector('#menuToggle');
+    const primaryNav = document.querySelector('#primaryNav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+      primaryNav.classList.toggle('is-open', !isOpen);
+    });
+
+    primaryNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation');
+      });
+    });
+
+    // Image fallback generator to gracefully show initials avatar if placeholder jpg is not present on disk
+    document.querySelectorAll('img').forEach((img) => {
+      img.addEventListener('error', function () {
+        const initials = this.dataset.initials || 'YRC';
+        const role = this.alt || 'Team Member';
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 450" width="100%" height="100%">
+          <defs>
+            <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1f1f23"/>
+              <stop offset="100%" stop-color="#0d0d0f"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g)"/>
+          <circle cx="200" cy="180" r="70" fill="#2d2d34" stroke="#c62828" stroke-width="4"/>
+          <path d="M120 360 C120 280, 280 280, 280 360 Z" fill="#2d2d34"/>
+          <text x="200" y="195" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#ffffff" text-anchor="middle">${initials}</text>
+          <text x="200" y="400" font-family="'Segoe UI', sans-serif" font-size="16" letter-spacing="2" font-weight="bold" fill="#ff5555" text-anchor="middle">PHOTO PLACEHOLDER</text>
+        </svg>`;
+        this.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+      });
+    });
+
+    // Core Team Carousel
+    (function initCarousel() {
+      const track = document.getElementById('carouselTrack');
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      const dotsContainer = document.getElementById('carouselDots');
+      const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+      let autoplayTimer;
+
+      function getVisibleCount() {
+        const width = window.innerWidth;
+        if (width <= 720) return 1;
+        if (width <= 1080) return 2;
+        return 3;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, totalSlides - getVisibleCount());
+      }
+
+      function updateControls() {
+        const visible = getVisibleCount();
+        const maxIndex = getMaxIndex();
+        currentIndex = Math.min(currentIndex, maxIndex);
+
+        // Calculate card percentage width + gap
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        const gap = 24;
+        const offset = currentIndex * (slideWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIndex;
+
+        // Render & update dots
+        const totalPositions = maxIndex + 1;
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalPositions; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot';
+          dot.type = 'button';
+          dot.setAttribute('aria-label', `Go to team slide ${i + 1}`);
+          dot.setAttribute('aria-pressed', String(i === currentIndex));
+          dot.innerHTML = '<span></span>';
+          dot.addEventListener('click', () => {
+            currentIndex = i;
+            updateControls();
+            restartAutoplay();
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function nextSlide() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+        } else {
+          currentIndex = 0; // Loop back
+        }
+        updateControls();
+      }
+
+      function prevSlide() {
+        const maxIndex = getMaxIndex();
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = maxIndex;
+        }
+        updateControls();
+      }
+
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        restartAutoplay();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        restartAutoplay();
+      });
+
+      // Keyboard accessibility
+      track.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { prevSlide(); restartAutoplay(); }
+        if (e.key === 'ArrowRight') { nextSlide(); restartAutoplay(); }
+      });
+
+      // Autoplay
+      function startAutoplay() {
+        stopAutoplay();
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          autoplayTimer = setInterval(nextSlide, 4500);
+        }
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) clearInterval(autoplayTimer);
+      }
+
+      function restartAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      const carouselContainer = document.querySelector('.carousel-container');
+      carouselContainer.addEventListener('mouseenter', stopAutoplay);
+      carouselContainer.addEventListener('mouseleave', startAutoplay);
+      carouselContainer.addEventListener('focusin', stopAutoplay);
+      carouselContainer.addEventListener('focusout', (e) => {
+        if (!carouselContainer.contains(e.relatedTarget)) startAutoplay();
+      });
+
+      // Touch / Swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) nextSlide();
+          else prevSlide();
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      // Window resize handler with debounce
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateControls, 100);
+      });
+
+      // Initialize
+      updateControls();
+      startAutoplay();
+    })();
+  </script>
+</body>
+</html>
